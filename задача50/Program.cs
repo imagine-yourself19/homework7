@@ -1,19 +1,13 @@
-﻿int[, ] CreateMatr(int n, int m)
+﻿int[, ] CreateMatrix(int[, ] matrix)
 {
-int[, ] matrix = new int[n ,m];
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
 for (int j = 0; j < matrix.GetLength(1); j++)
 {
-matrix[i, j] = new Random().Next(1, 10);
+int x = Convert.ToInt32(Console.ReadLine());
+matrix[i , j] = x;
 }
 }
-return matrix;
-}
-
-
-void PrintMatr(int[, ] matrix)
-{
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
 for (int j = 0; j < matrix.GetLength(1); j++)
@@ -22,25 +16,22 @@ Console.Write(matrix[i, j] + " ");
 }
 Console.WriteLine();
 }
+
+return matrix;
 }
 
-void FindNumber(int[,] matrix, int find)
+
+void CheckMatrix(int i, int j, int[, ] matrix)
 {
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-for (int j = 0; j < matrix.GetLength(1); j++)
-{
-if (matrix[i, j] != find)
-{
-    Console.WriteLine("Элемент не существует");
-}
+if (i < matrix.GetLength(0) && j < matrix.GetLength(1) && i >= 0 && j >= 0)
+Console.WriteLine(matrix[i, j]);
 else
-{
-    Console.WriteLine("Значение элемента массива = {0}", matrix[i, j]);
+Console.WriteLine("Ты ошибся");
 }
-}
-}
-}
-PrintMatr(CreateMatr(3, 4));
-int n = FindNumber(matrix, 4);
-Console.WriteLine(n);
+
+int[, ] matrix = new int[4, 4];
+matrix = CreateMatrix(matrix);
+Console.WriteLine("Введите координаты: ");
+int i = Convert.ToInt32(Console.ReadLine());
+int j = Convert.ToInt32(Console.ReadLine());
+CheckMatrix(i, j, matrix);
