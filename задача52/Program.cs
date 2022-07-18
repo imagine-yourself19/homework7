@@ -1,34 +1,41 @@
-﻿int[, ] CreateMatr(int n, int m)
+﻿int[, ] CreateMatrix(int[, ] matrix)
 {
-int[, ] matrix = new int[n ,m];
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
 for (int j = 0; j < matrix.GetLength(1); j++)
 {
-matrix[i, j] = new Random().Next(1, 10);
-Console.Write(matrix[i, j] + " ");
+//int x = Convert.ToInt32(Console.ReadLine());
+int x = new Random().Next(1, 1000);
+matrix[i , j] = x;
+}
+}
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+for (int j = 0; j < matrix.GetLength(1); j++)
+{
+Console.Write(matrix[i, j] + "\t");
 }
 Console.WriteLine();
 }
+
 return matrix;
 }
 
 
-void PrintMatr(int[, ] matrix)
+void AvgMatrix(int[, ] matrix)
 {
 Console.WriteLine();
-double SumOfColumnElements = 0;
-for (int j = 0; j < matrix.GetLength(1); j++)
-{
 for (int i = 0; i < matrix.GetLength(0); i++)
 {
-SumOfColumnElements += matrix[i, j];
+double avg = 0;
+for(int j = 0; j < matrix.GetLength(1); j++)
+{
+avg = avg + matrix[j, i];
+}
+Console.WriteLine(i + 1 + " столбец: " + avg/matrix.GetLength(0));
 }
 }
-Console.Write($"{ SumOfColumnElements / matrix.GetLength(0)} ");
-}
-Console.WriteLine("Введите кол-во строк в матрице:");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите кол-во столбцов в матрице:");
-int m = Convert.ToInt32(Console.ReadLine());
-PrintMatr(CreateMatr(n, m));
+
+int[, ] matrix = new int[4, 4];
+matrix = CreateMatrix(matrix);
+AvgMatrix(matrix);
