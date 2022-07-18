@@ -1,29 +1,13 @@
-﻿double[, ] CreateMatr(int n, int m)
+﻿int n = Convert.ToInt32(Console.ReadLine());
+int m = Convert.ToInt32(Console.ReadLine());
+double[,] a = new double[n, m];
+Random random = new Random();
+for (int i = 0; i < n; i++)
 {
-double[, ] matrix = new double[n ,m];
-for (int i = 0; i < matrix.GetLength(0); i++)
+for (int j = 0; j < m; j++)
 {
-for (int j = 0; j < matrix.GetLength(1); j++)
-{
-Random rand = new Random();
-matrix[i, j] = rand.NextDouble();
-matrix[i, j] = Math.Round(matrix[i, j], 2);
-}
-}
-return matrix;
-}
-
-
-void PrintMatr(double[, ] matrix)
-{
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-for (int j = 0; j < matrix.GetLength(1); j++)
-{
-Console.Write(matrix[i, j] + " ");
+a[i, j] = random.NextDouble() * 100;
+Console.Write("{0,6:F2}/t", a[i, j]);
 }
 Console.WriteLine();
 }
-}
-
-PrintMatr(CreateMatr(3, 4));
